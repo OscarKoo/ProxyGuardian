@@ -69,7 +69,7 @@ namespace ProxyGuardian
             this.chkBypass.Name = "chkBypass";
             this.chkBypass.Size = new System.Drawing.Size(96, 17);
             this.chkBypass.TabIndex = 3;
-            this.chkBypass.Text = "Enable Bypass";
+            this.chkBypass.Text = "Bypass Local";
             this.chkBypass.UseVisualStyleBackColor = true;
             // 
             // btnSave

@@ -24,6 +24,7 @@ namespace ProxyGuardian
 
     public interface IName
     {
+        [JsonIgnore]
         string Name { get; }
     }
 

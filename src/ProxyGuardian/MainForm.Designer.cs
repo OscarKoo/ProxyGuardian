@@ -127,7 +127,7 @@ namespace ProxyGuardian
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = nameof(ProxyGuardian);
             this.menu.ResumeLayout(false);
             this.menu.PerformLayout();
             this.ResumeLayout(false);
