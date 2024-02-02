@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 
 namespace ProxyGuardian
@@ -27,6 +28,7 @@ namespace ProxyGuardian
 
         void Initialize()
         {
+            this.menuStartup.Checked = this.config.RunAtStartup;
             this.txtInterval.Text = this.config.IntervalSeconds.ToString();
 
             foreach (var s in this.config.Scripts)
@@ -60,6 +62,35 @@ namespace ProxyGuardian
         {
             this.regGuardian.Stop();
             Application.Exit();
+        }
+
+        void MenuStartup_Click(object sender, EventArgs e)
+        {
+            var nextChecked = !((ToolStripMenuItem)sender).Checked;
+
+            const string registryPath = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+            try
+            {
+                using (var key = Registry.CurrentUser.OpenSubKey(registryPath, true))
+                {
+                    if (key != null)
+                    {
+                        if (nextChecked)
+                            key.SetValue(nameof(ProxyGuardian), Application.ExecutablePath);
+                        else if (key.GetValueNames().Contains(nameof(ProxyGuardian), StringComparer.OrdinalIgnoreCase))
+                            key.DeleteValue(nameof(ProxyGuardian), false);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Unable to open reg.");
+                    }
+                }
+
+                this.config.RunAtStartup = nextChecked;
+                WriteConfig(this.config);
+                ((ToolStripMenuItem)sender).Checked = nextChecked;
+            }
+            catch (Exception ex) { }
         }
 
         void Timer_Tick(object sender, EventArgs e)

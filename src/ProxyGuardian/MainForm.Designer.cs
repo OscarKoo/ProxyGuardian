@@ -1,4 +1,9 @@
-﻿namespace ProxyGuardian
+﻿using Microsoft.Win32;
+using System;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace ProxyGuardian
 {
     partial class MainForm
     {
@@ -39,6 +44,7 @@
             this.menuAddServer = new System.Windows.Forms.ToolStripMenuItem();
             this.separatorServer = new System.Windows.Forms.ToolStripSeparator();
             this.menuExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStartup = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,9 +65,10 @@
             this.separatorScript,
             this.menuAddServer,
             this.separatorServer,
+            this.menuStartup,
             this.menuExit});
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(181, 135);
+            this.menu.Size = new System.Drawing.Size(181, 157);
             // 
             // txtInterval
             // 
@@ -69,7 +76,7 @@
             this.txtInterval.Name = "txtInterval";
             this.txtInterval.Size = new System.Drawing.Size(100, 23);
             this.txtInterval.ToolTipText = "Interval Seconds";
-            this.txtInterval.TextChanged += new System.EventHandler(TxtInterval_TextChanged);
+            this.txtInterval.TextChanged += new System.EventHandler(this.TxtInterval_TextChanged);
             // 
             // separatorInterval
             // 
@@ -81,7 +88,7 @@
             this.menuAddScript.Name = "menuAddScript";
             this.menuAddScript.Size = new System.Drawing.Size(180, 22);
             this.menuAddScript.Text = "Add Script";
-            this.menuAddScript.Click += new System.EventHandler(MenuAddScript_Click);
+            this.menuAddScript.Click += new System.EventHandler(this.MenuAddScript_Click);
             // 
             // separatorScript
             // 
@@ -93,7 +100,7 @@
             this.menuAddServer.Name = "menuAddServer";
             this.menuAddServer.Size = new System.Drawing.Size(180, 22);
             this.menuAddServer.Text = "Add Server";
-            this.menuAddServer.Click += new System.EventHandler(MenuAddServer_Click);
+            this.menuAddServer.Click += new System.EventHandler(this.MenuAddServer_Click);
             // 
             // separatorServer
             // 
@@ -106,6 +113,13 @@
             this.menuExit.Size = new System.Drawing.Size(180, 22);
             this.menuExit.Text = "Exit";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
+            // 
+            // menuStartup
+            // 
+            this.menuStartup.Name = "menuStartup";
+            this.menuStartup.Size = new System.Drawing.Size(180, 22);
+            this.menuStartup.Text = "Run at startup";
+            this.menuStartup.Click += new System.EventHandler(this.MenuStartup_Click);
             // 
             // MainForm
             // 
@@ -131,5 +145,6 @@
         private System.Windows.Forms.ToolStripSeparator separatorServer;
         private System.Windows.Forms.ToolStripTextBox txtInterval;
         private System.Windows.Forms.ToolStripSeparator separatorInterval;
+        private System.Windows.Forms.ToolStripMenuItem menuStartup;
     }
 }

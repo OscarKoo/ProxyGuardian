@@ -48,8 +48,6 @@ namespace ProxyGuardian
         {
             var script = ProxyConfig?.EnabledScript;
             var server = ProxyConfig?.EnabledServer;
-            if (script == null && server == null)
-                return;
 
             try
             {
@@ -68,9 +66,11 @@ namespace ProxyGuardian
                 {
                     if (key != null)
                     {
-                        if (string.IsNullOrWhiteSpace(this.current.AutoConfigURL)
-                            && key.GetValueNames().Contains(nameof(ProxySetting.AutoConfigURL), StringComparer.OrdinalIgnoreCase))
-                            key.DeleteValue(nameof(ProxySetting.AutoConfigURL));
+                        if (string.IsNullOrWhiteSpace(this.current.AutoConfigURL))
+                        {
+                            if (key.GetValueNames().Contains(nameof(ProxySetting.AutoConfigURL), StringComparer.OrdinalIgnoreCase))
+                                key.DeleteValue(nameof(ProxySetting.AutoConfigURL));
+                        }
                         else
                             key.SetValue(nameof(ProxySetting.AutoConfigURL), this.current.AutoConfigURL);
 
