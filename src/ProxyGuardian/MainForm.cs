@@ -22,6 +22,7 @@ namespace ProxyGuardian
             ShowInTaskbar = false;
 
             this.config = ReadConfig();
+            Initialize();
         }
 
         void Initialize()
