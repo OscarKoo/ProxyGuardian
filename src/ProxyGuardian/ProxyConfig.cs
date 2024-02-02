@@ -6,7 +6,7 @@ namespace ProxyGuardian
 {
     public class ProxyConfig
     {
-        public int IntervalSeconds { get; set; } = 300;
+        public int IntervalSeconds { get; set; } = 60;
         public List<ScriptSetting> Scripts { get; set; } = new List<ScriptSetting>();
         public List<ServerSetting> Servers { get; set; } = new List<ServerSetting>();
 

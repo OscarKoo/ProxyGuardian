@@ -68,7 +68,8 @@
             this.txtInterval.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtInterval.Name = "txtInterval";
             this.txtInterval.Size = new System.Drawing.Size(100, 23);
-            this.txtInterval.TextChanged += TxtInterval_TextChanged;
+            this.txtInterval.ToolTipText = "Interval Seconds";
+            this.txtInterval.TextChanged += new System.EventHandler(TxtInterval_TextChanged);
             // 
             // separatorInterval
             // 
@@ -80,7 +81,7 @@
             this.menuAddScript.Name = "menuAddScript";
             this.menuAddScript.Size = new System.Drawing.Size(180, 22);
             this.menuAddScript.Text = "Add Script";
-            this.menuAddScript.Click += MenuAddScript_Click;
+            this.menuAddScript.Click += new System.EventHandler(MenuAddScript_Click);
             // 
             // separatorScript
             // 
@@ -92,7 +93,7 @@
             this.menuAddServer.Name = "menuAddServer";
             this.menuAddServer.Size = new System.Drawing.Size(180, 22);
             this.menuAddServer.Text = "Add Server";
-            this.menuAddServer.Click += MenuAddServer_Click;
+            this.menuAddServer.Click += new System.EventHandler(MenuAddServer_Click);
             // 
             // separatorServer
             // 

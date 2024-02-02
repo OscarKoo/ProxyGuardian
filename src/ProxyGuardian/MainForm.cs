@@ -22,7 +22,10 @@ namespace ProxyGuardian
             ShowInTaskbar = false;
 
             this.config = ReadConfig();
+        }
 
+        void Initialize()
+        {
             this.txtInterval.Text = this.config.IntervalSeconds.ToString();
 
             foreach (var s in this.config.Scripts)
@@ -181,6 +184,7 @@ namespace ProxyGuardian
                 item.Selected = !enabled;
                 menuItem.Checked = !enabled;
                 toggle.Text = menuItem.Checked ? "Disable" : "Enable";
+                this.regGuardian.Update();
                 WriteConfig(this.config);
             };
             return toggle;
