@@ -14,7 +14,7 @@ namespace ProxyGuardian
         readonly ProxyConfig config;
         readonly Timer timer = new Timer();
 
-        const string configFile = "./ProxyConfig.json";
+        static readonly string configFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "ProxyConfig.json");
 
         public MainForm()
         {
