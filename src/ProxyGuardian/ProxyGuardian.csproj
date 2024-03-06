@@ -115,4 +115,7 @@
     <Error Condition="!Exists('..\packages\Fody.4.0.2\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.4.0.2\build\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\Costura.Fody.3.3.3\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.3.3.3\build\Costura.Fody.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>echo f | xcopy "$(TargetPath)" "..\..\..\..\releases\" /s /y</PostBuildEvent>
+  </PropertyGroup>
 </Project>

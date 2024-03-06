@@ -206,7 +206,12 @@ namespace ProxyGuardian
             toggle.Click += (o, e) =>
             {
                 var enabled = menuItem.Checked;
-                (!isServer ? this.scripts : this.servers).ForEach(each => each.Checked = false);
+
+                foreach (var each in !isServer ? this.scripts : this.servers)
+                {
+                    each.Checked = false;
+                    each.DropDownItems[0].Text = "Enable";
+                }
 
                 foreach (var each in !isServer ? (IEnumerable<ISelected>)this.config.Scripts : this.config.Servers)
                 {
